@@ -1,0 +1,146 @@
+[33mcommit 8fd266f3132a349ac6b5bc00e4c2d8364b864f59[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Christian <christian.antognazza@gmail.com>
+Date:   Mon Oct 17 21:43:54 2022 -0300
+
+    primer commit
+
+[1mdiff --git a/EJ05extra.psc b/EJ05extra.psc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..f1739ff[m
+[1m--- /dev/null[m
+[1m+++ b/EJ05extra.psc[m
+[36m@@ -0,0 +1,70 @@[m
+[32m+[m[32mAlgoritmo sin_titulo[m
+[32m+[m[32m//	Tomando en cuenta el ejercicio 6, mejore el mecanismo de inserción del carácter, facilitando[m
+[32m+[m[32m//	un potencial reordenamiento del vector. Digamos que se pide ingresar el carácter en la[m
+[32m+[m[32m//	posición X y la misma está ocupada, entonces de existir un espacio en cualquier posición X-n[m
+[32m+[m[32m//	o X+n, desplazar los caracteres hacia la izq o hacia la derecha para poder ingresar el carácter[m
+[32m+[m[32m//		en cuestión en el lugar deseado. El procedimiento de reordenamiento debe ubicar el espacio[m
+[32m+[m	[32m//		más cercano.[m
+[32m+[m[41m	[m
+[32m+[m	[32mDefinir vector, vectorN, int, entrada Como Caracter[m
+[32m+[m	[32mDefinir i, pos, d, b Como Entero[m
+[32m+[m	[32mdefinir desplaza Como Logico[m
+[32m+[m	[32mDimension vector(20), vectorN(20)[m
+[32m+[m[41m	[m
+[32m+[m	[32md=0[m
+[32m+[m	[32mb=0[m
+[32m+[m	[32mdesplaza = Verdadero[m
+[32m+[m[41m	[m
+[32m+[m	[32mEscribir "Ingrese la frase a guardar"[m
+[32m+[m	[32mLeer int[m
+[32m+[m	[32mPara i=0 Hasta 19 Hacer[m
+[32m+[m		[32mvector(i)=Subcadena(int,i,i)[m[41m	[m
+[32m+[m		[32mvectorN(i)=Subcadena(int,i,i)[m[41m		[m
+[32m+[m	[32mFinPara[m
+[32m+[m[41m	[m
+[32m+[m	[32mEscribir "Ingrese el caracter que desea ingresar"[m
+[32m+[m	[32mLeer entrada[m
+[32m+[m	[32mEscribir "Ingrese la posición en la que lo desea almacenar"[m
+[32m+[m	[32mLeer pos[m
+[32m+[m[41m	[m
+[32m+[m	[32msi vector(pos)="" Entonces[m
+[32m+[m		[32mvector(pos)=entrada[m
+[32m+[m	[32mSiNo[m
+[32m+[m		[32mPara i<-pos hasta 19-pos con paso 1[m
+[32m+[m			[32msi vector(i)=""[m[41m [m
+[32m+[m				[32mb=b+1[m
+[32m+[m			[32mFinSi[m
+[32m+[m[41m			[m
+[32m+[m		[32mFinPara[m
+[32m+[m[41m		[m
+[32m+[m		[32mPara i<-pos hasta 0 con paso -1[m
+[32m+[m			[32msi vector(i)=" "[m
+[32m+[m				[32md=d+1[m
+[32m+[m			[32mfinsi[m[41m			[m
+[32m+[m		[32mFinPara[m
+[32m+[m[41m		[m
+[32m+[m		[32msi b>d Entonces[m
+[32m+[m			[32mPara i<-pos-1 hasta 0 con paso -1 hacer[m
+[32m+[m				[32msi vectorN(i) = "" entonces[m
+[32m+[m					[32mvectorN(i-1)=vector(i)[m
+[32m+[m[41m					[m
+[32m+[m				[32mFinSi[m
+[32m+[m			[32mFinPara[m
+[32m+[m			[32mvectorN(pos)=entrada[m
+[32m+[m		[32mSiNo[m
+[32m+[m			[32mPara i<-pos hasta 19-pos con paso 1 hacer[m
+[32m+[m				[32msi vectorN(i)<>"" entonces[m
+[32m+[m					[32mvectorN(i)=Subcadena(int,i+1,i+1)[m
+[32m+[m				[32mFinSi[m
+[32m+[m			[32mFinPara[m
+[32m+[m			[32mvectorN(pos)=entrada[m
+[32m+[m		[32mFinSi[m
+[32m+[m[41m		[m
+[32m+[m[41m		[m
+[32m+[m	[32mFinSi[m
+[32m+[m	[32mPara i=0 Hasta 19 Hacer[m
+[32m+[m[41m		[m
+[32m+[m		[32mEscribir vectorN(i) Sin Saltar[m
+[32m+[m	[32mFinPara[m
+[32m+[m[41m	[m
+[32m+[m[32mFinAlgoritmo[m
+\ No newline at end of file[m
+[1mdiff --git a/clear b/clear[m
+[1mnew file mode 100644[m
+[1mindex 0000000..70028ae[m
+[1m--- /dev/null[m
+[1m+++ b/clear[m
+[36m@@ -0,0 +1,25 @@[m
+[32m+[m[32mdiff.astextplain.textconv=astextplain[m
+[32m+[m[32mfilter.lfs.clean=git-lfs clean -- %f[m
+[32m+[m[32mfilter.lfs.smudge=git-lfs smudge -- %f[m
+[32m+[m[32mfilter.lfs.process=git-lfs filter-process[m
+[32m+[m[32mfilter.lfs.required=true[m
+[32m+[m[32mhttp.sslbackend=openssl[m
+[32m+[m[32mhttp.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt[m
+[32m+[m[32mcore.autocrlf=true[m
+[32m+[m[32mcore.fscache=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mpull.rebase=false[m
+[32m+[m[32mcredential.helper=manager-core[m
+[32m+[m[32mcredential.https://dev.azure.com.usehttppath=true[m
+[32m+[m[32minit.defaultbranch=master[m
+[32m+[m[32mgui.recentrepo=C:/Users/Christian/Desktop/programacion/prueba[m
+[32m+[m[32mcore.repositoryformatversion=0[m
+[32m+[m[32mcore.filemode=false[m
+[32m+[m[32mcore.bare=false[m
+[32m+[m[32mcore.logallrefupdates=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mcore.ignorecase=true[m
+[32m+[m[32mgui.wmstate=normal[m
+[32m+[m[32mgui.geometry=893x376+327+424 175 196[m
+[32m+[m[32mremote.origin.url=https://github.com/clickaton/egg[m
+[32m+[m[32mremote.origin.fetch=+refs/heads/*:refs/remotes/origin/*[m
+[1mdiff --git a/quiot b/quiot[m
+[1mnew file mode 100644[m
+[1mindex 0000000..edc1e01[m
+[1m--- /dev/null[m
+[1m+++ b/quiot[m
+[36m@@ -0,0 +1,26 @@[m
+[32m+[m[32mdiff.astextplain.textconv=astextplain[m
+[32m+[m[32mfilter.lfs.clean=git-lfs clean -- %f[m
+[32m+[m[32mfilter.lfs.smudge=git-lfs smudge -- %f[m
+[32m+[m[32mfilter.lfs.process=git-lfs filter-process[m
+[32m+[m[32mfilter.lfs.required=true[m
+[32m+[m[32mhttp.sslbackend=openssl[m
+[32m+[m[32mhttp.sslcainfo=C:/Program Files/Git/mingw64/ssl/certs/ca-bundle.crt[m
+[32m+[m[32mcore.autocrlf=true[m
+[32m+[m[32mcore.fscache=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mpull.rebase=false[m
+[32m+[m[32mcredential.helper=manager-core[m
+[32m+[m[32mcredential.https://dev.azure.com.usehttppath=true[m
+[32m+[m[32minit.defaultbranch=master[m
+[32m+[m[32mgui.recentrepo=C:/Users/Christian/Desktop/programacion/prueba[m
+[32m+[m[32muser.name=Christian[m
+[32m+[m[32mcore.repositoryformatversion=0[m
+[32m+[m[32mcore.filemode=false[m
+[32m+[m[32mcore.bare=false[m
+[32m+[m[32mcore.logallrefupdates=true[m
+[32m+[m[32mcore.symlinks=false[m
+[32m+[m[32mcore.ignorecase=true[m
+[32m+[m[32mgui.wmstate=normal[m
+[32m+[m[32mgui.geometry=893x376+327+424 175 196[m
+[32m+[m[32mremote.origin.url=https://github.com/clickaton/egg[m
+[32m+[m[32mremote.origin.fetch=+refs/heads/*:refs/remotes/origin/*[m
